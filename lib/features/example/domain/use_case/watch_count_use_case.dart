@@ -1,0 +1,15 @@
+import 'package:injectable/injectable.dart';
+import 'package:use_case_example/features/core/domain/use_case/models/use_case.dart';
+import 'package:use_case_example/features/core/domain/use_case/models/use_case_params.dart';
+import 'package:use_case_example/features/example/domain/repository/example_repository.dart';
+
+@lazySingleton
+final class WatchCountUseCase extends SimpleUseCase<Stream<int>> {
+  const WatchCountUseCase(this._exampleRepository);
+
+  final ExampleRepository _exampleRepository;
+
+  @override
+  Future<Stream<int>> execute(NoParams params) async =>
+      _exampleRepository.watchCount;
+}
